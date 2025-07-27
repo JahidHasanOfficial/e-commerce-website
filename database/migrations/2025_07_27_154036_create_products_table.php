@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use League\CommonMark\Reference\Reference;
 
 return new class extends Migration
 {
@@ -26,10 +27,10 @@ return new class extends Migration
             $table->string('third_image')->nullable();
             $table->string('fourth_image')->nullable();
             $table->boolean('status')->default(1);
-            $table->foreignId('category_id')->constrained()->onDelete();
-            $table->foreignId('subcategory_id')->constrained()->onDelete();
-            $table->foreignId('childcategory_id')->constrained()->onDelete();
-            $table->foreignId('brand_id')->constrained()->onDelete();
+            $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreignId('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
+            $table->foreignId('childcategory_id')->references('id')->on('childcategories')->onDelete('cascade');
+            $table->foreignId('brand_id')->references('id')->on('brands')->onDelete('cascade');
 
             $table->timestamps();
         });
