@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->integer('qty');
+            $table->decimal('total', 8, 2);
+            $table->datetimes('delivery_at')->nullable();
+            $table->string('status')->default('pending');
+            $table->foreignId('user_id')->constrained()->onDelete();
+            $table->foreignId('coupon_id')->nullable()->constrained()->onDelete();
+           
             $table->timestamps();
         });
     }
