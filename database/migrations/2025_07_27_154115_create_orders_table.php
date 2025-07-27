@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('delivery_at')->nullable();
             $table->string('status')->default('pending');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('coupon_id')->references('id')->on('coupons')->onDelete('cascade');
+            $table->foreignId('coupon_id')->nullable()->references('id')->on('coupons')->onDelete('cascade');
            
             $table->timestamps();
         });
