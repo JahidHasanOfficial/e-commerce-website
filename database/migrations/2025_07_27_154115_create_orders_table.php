@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->integer('qty');
             $table->decimal('total', 8, 2);
-            $table->dateTime('delivery_at')->nullable();
+            $table->dateTime('delivered_at')->nullable();
             $table->string('status')->default('pending');
+             $table->string('color');
+            $table->string('size');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('coupon_id')->nullable()->references('id')->on('coupons')->onDelete('cascade');
+            $table->foreignId('coupon_id')->nullable()->references('id')->on('coupons')->nullOnDelete('cascade');
            
             $table->timestamps();
         });

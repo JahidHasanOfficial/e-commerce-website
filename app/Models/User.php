@@ -3,9 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -17,10 +18,17 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = [
+     protected $fillable = [
         'name',
         'email',
         'password',
+        'address',
+        'city',
+        'country',
+        'zip_code',
+        'phone_number',
+        'profile_image',
+        'profile_completed'
     ];
 
     /**
@@ -44,5 +52,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function orders() : HasMany
+    {
+        return $this->hasMany(Order::class)->with('products')->latest();
+    }
+
+    public function imagePath() : string 
+    {
+        return $this->profile_image ? asset($this->profile_image) : "https://cdn.pixabay.com/photo/2017/11/10/05/48/user-2935527_1280.png";
     }
 }
