@@ -29,7 +29,7 @@ class Coupon extends Model
       /**
      * check if the coupon is valid.
      */
-    public function checkIfExpired(): string
+    public function checkIfExpired(): bool
     {
        if($this->expires_at > date('Y-m-d H:i:s')) {
             return false;
