@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('colorproducts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreignId('color_id')->references('id')->on('colors')->onDelete('cascade');
+
+            // Define only once using foreignId
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->foreignId('color_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
         });
     }

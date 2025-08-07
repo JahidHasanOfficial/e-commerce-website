@@ -17,11 +17,13 @@ return new class extends Migration
             $table->decimal('total', 8, 2);
             $table->dateTime('delivered_at')->nullable();
             $table->string('status')->default('pending');
-             $table->string('color');
+            $table->string('color');
             $table->string('size');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('coupon_id')->nullable()->references('id')->on('coupons')->nullOnDelete('cascade');
-           
+
+            // Foreign keys (clean way)
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('coupon_id')->nullable()->constrained()->nullOnDelete();
+
             $table->timestamps();
         });
     }

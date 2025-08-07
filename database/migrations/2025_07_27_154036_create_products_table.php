@@ -27,10 +27,12 @@ return new class extends Migration
             $table->string('third_image')->nullable();
             $table->string('fourth_image')->nullable();
             $table->boolean('status')->default(1);
-            $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreignId('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
-            $table->foreignId('childcategory_id')->references('id')->on('childcategories')->onDelete('cascade');
-            $table->foreignId('brand_id')->references('id')->on('brands')->onDelete('cascade');
+
+            // Foreign keys - clean way
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('subcategory_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('childcategory_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('brand_id')->nullable()->constrained()->onDelete('cascade');
 
             $table->timestamps();
         });
