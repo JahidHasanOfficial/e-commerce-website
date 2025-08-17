@@ -39,7 +39,7 @@ class AdminAdminController extends Controller
 
         if (auth()->guard('admin')->attempt($request->validated())) {
             $request->session()->regenerate();
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.index');
         }else {
             // If authentication fails, redirect back with an error message
             return Redirect::back()->withErrors([
