@@ -20,7 +20,7 @@ class AdminAdminController extends Controller
         $userCount = User::count();
         $orderCount = Order::count();
         $reviewCount = Review::count();
-        return view('admin.dashboard' , compact('userCount', 'orderCount', 'reviewCount'));
+        return view('backend.dashboard' , compact('userCount', 'orderCount', 'reviewCount'));
     }
 
     /**
@@ -28,7 +28,7 @@ class AdminAdminController extends Controller
      */
     public function login()
     {        // Logic to display a list of admins
-       return view('admin.login');
+       return view('backend.login');
     }
 
     /**

@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAdminController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/admin/login', [AdminAdminController::class, 'login'])->name('admin.login');
 Route::post('/admin/auth', [AdminAdminController::class, 'auth'])->name('admin.auth');
