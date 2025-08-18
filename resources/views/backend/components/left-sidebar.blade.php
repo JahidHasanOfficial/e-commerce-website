@@ -38,14 +38,14 @@
                 <li class="menu-title">Main</li>
 
                 <li>
-                    <a href="{{ route('dashboard') }}" class="waves-effect">
+                    <a href="{{ route('admin.index') }}" class="waves-effect">
                         <i class="mdi mdi-home"></i>
                         <span>Dashboard</span>
 
                     </a>
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-email"></i>
                         <span>Category</span>
@@ -54,9 +54,9 @@
                         <li><a href="{{ route('admin_category.index') }}">Category List</a></li>
                         <li><a href="{{ route('admin_category.create') }}">Add Category</a></li>
                     </ul>
-                </li>
+                </li> --}}
 
-                <li>
+                {{-- <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-email"></i>
                         <span>Bloods</span>
@@ -65,7 +65,7 @@
                         <li><a href="{{ route('admin_blood.index') }}">Blood List</a></li>
                         <li><a href="{{ route('admin_blood.create') }}">Add Blood</a></li>
                     </ul>
-                </li>
+                </li> --}}
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

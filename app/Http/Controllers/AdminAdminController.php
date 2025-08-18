@@ -20,7 +20,7 @@ class AdminAdminController extends Controller
         $userCount = User::count();
         $orderCount = Order::count();
         $reviewCount = Review::count();
-        return view('admin.dashboard' , compact('userCount', 'orderCount', 'reviewCount'));
+        return view('backend.dashboard' , compact('userCount', 'orderCount', 'reviewCount'));
     }
 
     /**
