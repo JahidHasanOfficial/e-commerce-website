@@ -17,8 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        $categories = Category::orderBy('id', 'desc')->get();
+         $CategoryCount = str_pad($categories->count(), 2, '0', STR_PAD_LEFT);
+        return view('backend.pages.categories.index', compact('categories', 'CategoryCount'));
     }
 
     /**
@@ -26,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        return view('backend.pages.categories.create');
     }
 
     /**
@@ -51,7 +52,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.edit', compact('category'));
+       
+        return view('backend.pages.categories.edit', compact('category'));
     }
 
     /**

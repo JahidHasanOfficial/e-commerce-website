@@ -45,16 +45,16 @@
                     </a>
                 </li>
 
-                {{-- <li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-email"></i>
                         <span>Category</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin_category.index') }}">Category List</a></li>
-                        <li><a href="{{ route('admin_category.create') }}">Add Category</a></li>
+                        <li><a href="{{ route('admin.categories.index') }}">Category List</a></li>
+                        <li><a href="{{ route('admin.categories.create') }}">Add Category</a></li>
                     </ul>
-                </li> --}}
+                </li>
 
                 {{-- <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

@@ -192,8 +192,8 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{ asset('backend/assets/images/users/avatar-4.jpg') }}"
-                        alt="Header Avatar">
+                    <img class="rounded-circle header-profile-user"
+                        src="{{ asset('backend/assets/images/users/avatar-4.jpg') }}" alt="Header Avatar">
                 </button>
 
                 <div class="dropdown-menu dropdown-menu-end">
@@ -204,16 +204,28 @@
                     <a class="dropdown-item" href="#"><i
                             class="mdi mdi-wallet font-size-16 align-middle text-muted me-2"></i>
                         <span>My Wallet</span></a>
-                    <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i
+                    <a class="dropdown-item d-block" href="#"><span
+                            class="badge bg-success float-end">11</span><i
                             class="mdi mdi-wrench font-size-16 align-middle text-muted me-2"></i>
                         <span>Settings</span></a>
                     <a class="dropdown-item" href="#"><i
                             class="mdi mdi-lock-open-outline font-size-16 text-muted align-middle me-2"></i>
                         <span>Lock screen</span></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-primary" href="#"><i
+                    {{-- <a class="dropdown-item text-primary" href=""><i
                             class="mdi mdi-power font-size-16 align-middle me-2 text-primary"></i>
-                        <span>Logout</span></a>
+                        <span>Logout</span></a> --}}
+                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
+                        style="display: none;">
+                        @csrf
+                    </form>
+
+                    <a class="dropdown-item text-primary" href="#"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="mdi mdi-power font-size-16 align-middle me-2 text-primary"></i>
+                        <span>Logout</span>
+                    </a>
+
                 </div>
             </div>
 
