@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubCategoryController;
 
 Route::get('/', function () {
     return view('frontend.home');
@@ -29,6 +30,18 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
             'destroy' => 'categories.destroy',
         ]
     ]);
+
+    //SubCategory Routes
+    Route::resource('subcategories', SubCategoryController::class, [
+        'names' => [
+            'index' => 'subcategories.index',
+            'create' => 'subcategories.create',
+            'store' => 'subcategories.store',
+            'edit' => 'subcategories.edit',
+            'update' => 'subcategories.update',
+            'destroy' => 'subcategories.destroy',
+        ]
+        ]);
 });
 
 
