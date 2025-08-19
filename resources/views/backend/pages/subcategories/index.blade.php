@@ -42,7 +42,8 @@
                                     <thead>
                                         <tr class="">
                                             <th>SL</th>
-                                            <th>Name</th>
+                                            <th>Category</th>
+                                            <th>Sub Category</th>
                                             <th>Slug</th>
                                             <th>Action</th>
                                         </tr>
@@ -50,8 +51,9 @@
 
                                     <tbody>
                                         @foreach ($subcategories as $data)
-                                            <tr class="">
+                                            <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $data->category->name ?? 'N/A' }}</td>
                                                 <td>{{ $data->name }}</td>
                                                 <td>{{ $data->slug }}</td>
                                                 <td>

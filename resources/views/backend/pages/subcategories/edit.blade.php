@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title', 'Update Categories')
+@section('title', 'Update Sub Categories')
 @section('content')
 
     <div class="page-content">
@@ -10,10 +10,10 @@
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
                         <div class="page-title">
-                            <h4 class="mb-0 font-size-18">Edit Categories</h4>
+                            <h4 class="mb-0 font-size-18">Update Sub Categories</h4>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Categories</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Sub Categories</a></li>
                                 <li class="breadcrumb-item active">Update</li>
                             </ol>
                         </div>
@@ -25,22 +25,35 @@
             <!-- Start Page-content-Wrapper -->
             <div class="page-content-wrapper">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-8">
                         <div class="card">
                             <div class="card-body">
 
-                                <h4 class="card-title">Update Categories</h4>
+                                <h4 class="card-title">Update Sub Categories</h4>
 
-                                <form action="{{ route('admin.categories.update', $category->slug) }}" method="POST"
+                                <form action="{{ route('admin.subcategories.update', $subcategory->slug) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
+                                    <div class="mb-3 row">
+                                        <label class="col-md-2 col-form-label">Category</label>
+                                        <div class="col-md-10">
+                                            <select name="category_id" class="form-select">
+                                                <option value="">Select Category</option>
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}"
+                                                        {{ $subcategory->category_id == $category->id ? 'selected' : '' }}>
+                                                        {{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
 
                                     <div class="mb-3 row">
                                         <label class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" name="name"
-                                                value="{{ old('name', $category->name) }}" placeholder="Enter Your Name">
+                                                value="{{ old('name', $subcategory->name) }}" placeholder="Enter Your Name">
                                         </div>
                                     </div>
 

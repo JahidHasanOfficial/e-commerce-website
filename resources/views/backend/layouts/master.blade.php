@@ -29,7 +29,17 @@
     <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+<style>
+    .form-select {
+    border: 1px solid #ced4da !important;
+}
 
+    
+.page-content-wrapper {
+    margin-top: -50px !important;
+}
+
+</style>
 </head>
 
 <body data-topbar="colored">
