@@ -56,10 +56,10 @@ class SubCategoryController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Subcategory $subcategory)
-    {
-        $categories = Category::all();
-        return view('backend.pages.subcategories.edit', compact('categories', 'subcategory'));
-    }
+{
+    $categories = Category::all();
+    return view('backend.pages.subcategories.edit', compact('categories', 'subcategory'));
+}
 
     /**
      * Update the specified resource in storage.

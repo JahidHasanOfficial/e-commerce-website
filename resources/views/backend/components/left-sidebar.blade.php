@@ -65,16 +65,16 @@
                         <li><a href="{{ route('admin.subcategories.index') }}">Sub Category List</a></li>
                         <li><a href="{{ route('admin.subcategories.create') }}">Add Sub Category</a></li>
                     </ul>
-                </li>
+                </li>    
                 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-email"></i>
-                        <span>Sub Category</span>
+                        <span>Child Category</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.subcategories.index') }}">Sub Category List</a></li>
-                        <li><a href="{{ route('admin.subcategories.create') }}">Add Sub Category</a></li>
+                        <li><a href="{{ route('admin.childcategories.index') }}">Child Category List</a></li>
+                        <li><a href="{{ route('admin.childcategories.create') }}">Add Child Category</a></li>
                     </ul>
                 </li>
 

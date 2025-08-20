@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Childcategory;
+use App\Models\Category;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use App\Models\Childcategory;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\AddChildcategorRequest;
+use App\Http\Requests\UpdateChildcategorRequest;
 
 class ChildCategoryController extends Controller
 {
@@ -13,7 +18,9 @@ class ChildCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $childcategories = Childcategory::with('subcategory')->orderBy('id', 'desc')->get();
+        $childcategoriescount = str_pad($childcategories->count(), 2, '0', STR_PAD_LEFT);
+        return view('backend.pages.childcategories.index', compact('childcategories', 'childcategoriescount'));
     }
 
     /**
@@ -21,15 +28,19 @@ class ChildCategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        return view('backend.pages.childcategories.create', compact('categories', 'subcategories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AddChildcategorRequest $request) : RedirectResponse
     {
-        //
+
+        Childcategory::create($request->validated());
+        return redirect()->route('admin.childcategories.index')->with('success', 'Childcategory created successfully.');
     }
 
     /**
@@ -37,7 +48,7 @@ class ChildCategoryController extends Controller
      */
     public function show(Childcategory $childcategory)
     {
-        //
+        abort(404, 'This method is not implemented yet.');
     }
 
     /**
@@ -45,15 +56,18 @@ class ChildCategoryController extends Controller
      */
     public function edit(Childcategory $childcategory)
     {
-        //
+        $subcategories = Subcategory::all();
+        return view('backend.pages.childcategories.edit', compact('subcategories', 'childcategory'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Childcategory $childcategory)
+    public function update(UpdateChildcategorRequest $request, Childcategory $childcategory) : RedirectResponse
     {
-        //
+
+        $childcategory->update($request->validated());
+        return redirect()->route('admin.childcategories.index')->with('success', 'Childcategory updated successfully.');
     }
 
     /**
@@ -61,6 +75,7 @@ class ChildCategoryController extends Controller
      */
     public function destroy(Childcategory $childcategory)
     {
-        //
+        $childcategory->delete();
+        return redirect()->route('admin.childcategories.index')->with('success', 'Childcategory deleted successfully.');
     }
 }
