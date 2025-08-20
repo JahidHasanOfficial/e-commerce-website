@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title', 'Child Categories List')
+@section('title', 'Colors List')
 @section('content')
 
     <div class="page-content">
@@ -9,10 +9,10 @@
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
                         <div class="page-title">
-                            <h4 class="mb-0 font-size-18"> Child Categories List</h4>
+                            <h4 class="mb-0 font-size-18">Colors List</h4>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript:void(0);">Dashboard</a></li>
-                                <li class="breadcrumb-item active"> Child Categories List</li>
+                                <li class="breadcrumb-item active">Colors List</li>
                             </ol>
                         </div>
                     </div>
@@ -28,9 +28,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
-                                    <h4 class="card-title">
-                                        Child Categories List ({{ $childcategoriescount }})</h4>
-                                    <a href="{{ route('admin.childcategories.create') }}" class="btn btn-primary mb-3">Add New</a>
+                                    <h4 class="card-title">Colors List ({{ $colorscount }})</h4>
+                                    <a href="{{ route('admin.colors.create') }}" class="btn btn-primary mb-3">Add New</a>
                                 </div>
 
                                 <table id="datatable-buttons"
@@ -39,22 +38,20 @@
                                     <thead>
                                         <tr class="">
                                             <th>SL</th>
-                                             <th>Sub Category</th>
-                                                <th>Child Category</th>
-                                                <th>Slug</th>
-                                                <th>Action</th>
+                                            <th>Name</th>
+                                            <th>Slug</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        @foreach ($childcategories as $data)
-                                            <tr>
+                                        @foreach ($colors as $data)
+                                            <tr class="">
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $data->subcategory->name ?? 'N/A' }}</td>
                                                 <td>{{ $data->name }}</td>
                                                 <td>{{ $data->slug }}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.childcategories.edit', $data->slug) }}"
+                                                    <a href="{{ route('admin.colors.edit', $data->slug) }}"
                                                         class="btn btn-primary btn-sm">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
@@ -65,7 +62,7 @@
                                                     </a>
 
                                                     <form id="delete-form-{{ $data->id }}"
-                                                        action="{{ route('admin.childcategories.destroy', $data->slug) }}"
+                                                        action="{{ route('admin.colors.destroy', $data->slug) }}"
                                                         method="POST" style="display: none;">
                                                         @csrf
                                                         @method('DELETE')

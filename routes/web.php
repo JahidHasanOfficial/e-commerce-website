@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
@@ -67,7 +68,19 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
                 'update' => 'brands.update',
                 'destroy' => 'brands.destroy',
             ]
-            ]);    
+            ]);  
+            
+         // Colors Routes
+         Route::resource('colors', ColorController::class, [
+            'names' => [
+                'index' => 'colors.index',
+                'create' => 'colors.create',
+                'store' => 'colors.store',
+                'edit' => 'colors.edit',
+                'update' => 'colors.update',
+                'destroy' => 'colors.destroy',
+            ]
+            ]);   
 });
 
 

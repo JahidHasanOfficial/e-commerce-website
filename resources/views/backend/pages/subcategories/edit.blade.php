@@ -31,35 +31,40 @@
 
                                 <h4 class="card-title">Update Sub Categories</h4>
 
-                               <form action="{{ route('admin.subcategories.update', $subcategory->slug) }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
+                                <form action="{{ route('admin.subcategories.update', $subcategory->slug) }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
 
-    <div class="mb-3 row">
-        <label class="col-md-2 col-form-label">Category</label>
-        <div class="col-md-10">
-            <select name="category_id" class="form-select">
-                <option value="">Select Category</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" {{ $subcategory->category_id == $category->id ? 'selected' : '' }}>
-                        {{ $category->name }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-md-2 col-form-label">Category</label>
+                                        <div class="col-md-10">
+                                            <select name="category_id" class="form-select">
+                                                <option value="">Select Category</option>
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}"
+                                                        {{ $subcategory->category_id == $category->id ? 'selected' : '' }}>
+                                                        {{ $category->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
 
-    <div class="mb-3 row">
-        <label class="col-md-2 col-form-label">Name</label>
-        <div class="col-md-10">
-            <input class="form-control" type="text" name="name"
-                value="{{ old('name', $subcategory->name) }}" placeholder="Enter Subcategory Name">
-        </div>
-    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-md-2 col-form-label">Name</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{ old('name', $subcategory->name) }}"placeholder="Enter Subcategory Name">
+                                            @error('name')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
 
-    <button type="submit" class="btn btn-primary">Update</button>
-</form>
-
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </form>
 
                             </div>
                         </div>

@@ -29,8 +29,7 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                        <h4 class="card-title">Brands List ({{ $brandscount }})</h4>
-                                        <a href="{{ route('admin.brands.create') }}" class="btn btn-primary mb-3">Add
-                                            New</a>
+                                        <a href="{{ route('admin.brands.create') }}" class="btn btn-primary mb-3">Add New</a>
                                     </div>
 
                                     <table id="datatable-buttons"

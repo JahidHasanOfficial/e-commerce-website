@@ -39,8 +39,12 @@
                                     <div class="mb-3 row">
                                         <label class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" name="name"
-                                                value="{{ old('name', $category->name) }}" placeholder="Enter Your Name">
+                                            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{ old('name', $category->name) }}" placeholder="Enter Your Name">
+                                            @error('name')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
 
