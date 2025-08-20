@@ -42,6 +42,18 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
             'destroy' => 'subcategories.destroy',
         ]
         ]);
+
+        // ChildCategory Routes
+        Route::resource('childcategories', ChildCategoryController::class, [
+            'names' => [
+                'index' => 'childcategories.index',
+                'create' => 'childcategories.create',
+                'store' => 'childcategories.store',
+                'edit' => 'childcategories.edit',
+                'update' => 'childcategories.update',
+                'destroy' => 'childcategories.destroy',
+            ]
+            ]);
 });
 
 
