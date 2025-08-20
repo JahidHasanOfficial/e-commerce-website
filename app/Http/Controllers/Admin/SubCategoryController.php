@@ -15,13 +15,15 @@ class SubCategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-  public function index()
-{
-    $subcategories = Subcategory::orderBy('id', 'desc')->get();
-    $SubCategoryCount = str_pad($subcategories->count(), 2, '0', STR_PAD_LEFT);
-    return view('backend.pages.subcategories.index', compact('subcategories', 'SubCategoryCount'));
-}
+    public function index()
+    {
 
+
+        $subcategories = Subcategory::with('category')->orderBy('id', 'desc')->get();
+        $SubCategoryCount = str_pad($subcategories->count(), 2, '0', STR_PAD_LEFT);
+
+        return view('backend.pages.subcategories.index', compact('subcategories', 'SubCategoryCount'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -35,9 +37,9 @@ class SubCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AddSubCategryRequest $request) : RedirectResponse
+    public function store(AddSubCategryRequest $request): RedirectResponse
     {
-        
+
         Subcategory::create($request->validated());
         return redirect()->route('admin.subcategories.index')->with('success', 'Subcategory created successfully.');
     }
@@ -55,7 +57,8 @@ class SubCategoryController extends Controller
      */
     public function edit(Subcategory $subcategory)
     {
-        return view('backend.pages.subcategories.edit', compact('subcategory'));
+        $categories = Category::all();
+        return view('backend.pages.subcategories.edit', compact('categories', 'subcategory'));
     }
 
     /**

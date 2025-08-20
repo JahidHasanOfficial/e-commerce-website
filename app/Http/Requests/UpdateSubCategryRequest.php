@@ -11,7 +11,7 @@ class UpdateSubCategryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateSubCategryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'category_id' => 'required|integer|exists:categories,id',
+            'name' => 'required|string|max:255|unique:subcategories,name,' . $this->route('subcategory')->id,
         ];
     }
 }

@@ -25,19 +25,19 @@
         <!-- Start Page-content-Wrapper -->
         <div class="page-content-wrapper">
             <div class="row">
-                <div class="col-12">
+                <div class="col-8">
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Create Categories</h4>
+                            <h4 class="card-title">Create Sub Categories</h4>
 
-                            <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.subcategories.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="mb-3 row">
-                                    <label class="col-md-2 col-form-label">Sub Category</label>
+                                    <label class="col-md-2 col-form-label">Category</label>
                                     <div class="col-md-10">
-                                        <select name="category_id" class="form-control">
+                                        <select name="category_id" class="form-select">
                                             <option value="">Select Category</option>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
