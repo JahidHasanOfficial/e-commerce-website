@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
@@ -55,6 +56,18 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
                 'destroy' => 'childcategories.destroy',
             ]
             ]);
+
+        // Brands Routes
+        Route::resource('brands', BrandController::class, [
+            'names' => [
+                'index' => 'brands.index',
+                'create' => 'brands.create',
+                'store' => 'brands.store',
+                'edit' => 'brands.edit',
+                'update' => 'brands.update',
+                'destroy' => 'brands.destroy',
+            ]
+            ]);    
 });
 
 

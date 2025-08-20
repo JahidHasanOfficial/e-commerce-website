@@ -78,6 +78,18 @@
                     </ul>
                 </li>
 
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-email"></i>
+                        <span>Brands</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.brands.index') }}">Brand List</a></li>
+                        <li><a href="{{ route('admin.brands.create') }}">Add Brand</a></li>
+                    </ul>
+                </li>
+
                 {{-- <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-email"></i>
