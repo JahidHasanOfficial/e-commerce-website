@@ -101,6 +101,17 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-email"></i>
+                        <span>Sizes</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.sizes.index') }}">Size List</a></li>
+                        <li><a href="{{ route('admin.sizes.create') }}">Add Size</a></li>
+                    </ul>
+                </li>
+
                 {{-- <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-email"></i>

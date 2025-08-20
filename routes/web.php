@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ColorController;
@@ -80,7 +81,19 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
                 'update' => 'colors.update',
                 'destroy' => 'colors.destroy',
             ]
-            ]);   
+            ]); 
+            
+    // Sizes Routes
+    Route::resource('sizes', SizeController::class, [
+        'names' => [
+            'index' => 'sizes.index',
+            'create' => 'sizes.create',
+            'store' => 'sizes.store',
+            'edit' => 'sizes.edit',
+            'update' => 'sizes.update',
+            'destroy' => 'sizes.destroy',
+        ]
+    ]);
 });
 
 
