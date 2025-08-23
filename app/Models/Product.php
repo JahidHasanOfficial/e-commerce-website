@@ -94,6 +94,11 @@ class Product extends Model
         return 'slug';
     }
 
+    // protected static function booted() : void
+    // {
+    //     static::automaticallyEagerLoadRelationships();
+    // }
+
 
 
    

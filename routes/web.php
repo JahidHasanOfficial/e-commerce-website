@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
@@ -92,6 +93,18 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
             'edit' => 'sizes.edit',
             'update' => 'sizes.update',
             'destroy' => 'sizes.destroy',
+        ]
+    ]);
+
+    // Products Routes
+    Route::resource('products', ProductController::class, [
+        'names' => [
+            'index' => 'product.index',
+            'create' => 'product.create',
+            'store' => 'product.store',                    
+            'edit' => 'product.edit',
+            'update' => 'product.update',
+            'destroy' => 'product.destroy',
         ]
     ]);
 });
