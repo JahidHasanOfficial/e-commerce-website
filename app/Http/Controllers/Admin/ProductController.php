@@ -151,24 +151,56 @@ class ProductController extends Controller
     /**
      * Save image to storage and return the path
      */ 
-    public function saveImage($file) 
-    {
-        $image_name = time() . '_' . $file->getClientOriginalExtension();
-       $path = $file->storeAs('images/products', $image_name, 'public');
-       // return the path 
-         return $path;
+    // public function saveImage($file) 
+    // {
+    //     $image_name = time() . '_' . $file->getClientOriginalExtension();
+    //    $path = $file->storeAs('images/products', $image_name, 'public');
+    //    // return the path 
+    //      return $path;
+    // }
+
+    public function saveImage($file)
+{
+    if (!$file) {
+        return null; // jodi file na thake
     }
+
+    // filename generate: time_stamp_originalname
+    $filename = time() . '_' . $file->getClientOriginalName();
+
+    // store the file in storage/app/public/images/products
+    $path = $file->storeAs('images/products', $filename, 'public');
+
+    // return the public path to save in database
+    return 'images/products/' . $filename;
+}
+
 
     /**
      * Remove product image from storage
      */ 
+    // public function removeProductImageFromStorage($file) 
+    // {
+    //    $path = str_replace('storage/', '', $file);
+    //    if(Storage::disk('public')->exists($path)){
+    //     Storage::disk('public')->delete($path);
+    //    }
+    // }
+
     public function removeProductImageFromStorage($file) 
-    {
-       $path = str_replace('storage/', '', $file);
-       if(Storage::disk('public')->exists($path)){
-        Storage::disk('public')->delete($path);
-       }
+{
+    if (!$file) return false; // file empty hole kichu korbe na
+
+    // database path e jodi 'storage/' thake, remove kore storage disk e match korano
+    $path = str_replace('storage/', '', $file);
+
+    if (Storage::disk('public')->exists($path)) {
+        return Storage::disk('public')->delete($path); // true/false return kore
     }
+
+    return false; // file exist kore nai
+}
+
 
     /**
      * Get product form data
