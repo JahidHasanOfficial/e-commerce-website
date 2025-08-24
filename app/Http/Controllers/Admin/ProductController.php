@@ -29,7 +29,9 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all()->withRelationshipAutoloading();
-        return view('backend.pages.product.index', compact('products'));
+         $productCount = str_pad($products->count(), 2, '0', STR_PAD_LEFT);
+
+        return view('backend.pages.products.index', compact('products' ,'productCount'));
     }
 
     /**
@@ -37,7 +39,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.product.create')->with($this->getProductFormData());
+        return view('backend.pages.products.create')->with($this->getProductFormData());
     }
 
     /**
@@ -57,7 +59,7 @@ class ProductController extends Controller
         // calculate discount if old price is present
         if($request->old_price > 0 && $request->old_price > $request->price){
            $data['old_price'] = $request->old_price;
-           $data['discount'] = round((($request->old_price - $request->price) / $request->old_price) * 100);
+           $data['discount_price'] = round((($request->old_price - $request->price) / $request->old_price) * 100);
         }
         // store the product
         $product = Product::create($data);
@@ -68,7 +70,7 @@ class ProductController extends Controller
         // add product sizes
         $product->sizes()->sync($request->size_id);
 
-        return redirect()->route('admin.product.index')->with('success', 'Product added successfully');
+        return redirect()->route('admin.products.index')->with('success', 'Product added successfully');
 
 
       
@@ -89,7 +91,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('backend.pages.product.edit')->with(array_merge($this->getProductFormData(), ['product' => $product]));
+        return view('backend.pages.products.edit')->with(array_merge($this->getProductFormData(), ['product' => $product]));
     }
 
     /**
@@ -126,7 +128,7 @@ class ProductController extends Controller
         // add product sizes
         $product->sizes()->sync($request->size_id);
 
-        return redirect()->route('admin.product.index')->with('success', 'Product updated successfully');
+        return redirect()->route('admin.products.index')->with('success', 'Product updated successfully');
 
     }
 
@@ -143,7 +145,7 @@ class ProductController extends Controller
         // delete the product
         $product->delete();
 
-        return redirect()->route('admin.product.index')->with('success', 'Product deleted successfully');
+        return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully');
     }
 
     /**

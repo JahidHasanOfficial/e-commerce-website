@@ -23,7 +23,7 @@ class Product extends Model
         'qty',
         'price',
         'old_price',
-        'discount',
+        'discount_price',
         'thumbnail',
         'first_image',
         'second_image',
@@ -64,14 +64,15 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function colors() : BelongsToMany
-    {
-        return $this->belongsToMany(Color::class);
-    }
+   public function colors(): BelongsToMany
+{
+    return $this->belongsToMany(Color::class, 'color_products');
+}
+
 
     public function sizes() : BelongsToMany
     {
-        return $this->belongsToMany(Size::class);
+        return $this->belongsToMany(Size::class, 'product_sizes');
     }
 
     public function orders() : BelongsToMany

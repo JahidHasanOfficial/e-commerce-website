@@ -27,10 +27,11 @@ class Color extends Model
     /**
      * Get the products associated with the brand.
      */
-    public function products() : BelongsToMany
-    {
-        return $this->belongsToMany(Product::class);
-    }
+    public function products(): BelongsToMany
+{
+    return $this->belongsToMany(Product::class, 'color_products');
+}
+
     
     /**
      * Get the route key for the model.

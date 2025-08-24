@@ -99,12 +99,12 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
     // Products Routes
     Route::resource('products', ProductController::class, [
         'names' => [
-            'index' => 'product.index',
-            'create' => 'product.create',
-            'store' => 'product.store',                    
-            'edit' => 'product.edit',
-            'update' => 'product.update',
-            'destroy' => 'product.destroy',
+            'index' => 'products.index',
+            'create' => 'products.create',
+            'store' => 'products.store',                    
+            'edit' => 'products.edit',
+            'update' => 'products.update',
+            'destroy' => 'products.destroy',
         ]
     ]);
 });

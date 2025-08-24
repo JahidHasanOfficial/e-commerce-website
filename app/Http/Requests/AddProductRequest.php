@@ -28,7 +28,7 @@ class AddProductRequest extends FormRequest
             'qty'                => 'required|integer',
             'price'              => 'required|numeric|min:0',
             'old_price'          => 'required|numeric|min:0',
-            'discount'           => 'nullable|numeric|min:0',
+            'discount_price'     => 'nullable|numeric|min:0',
             'category_id'        => 'required|exists:categories,id',
             'subcategory_id'     => 'required|exists:subcategories,id',
             'childcategory_id'   => 'required|exists:childcategories,id',

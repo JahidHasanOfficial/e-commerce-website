@@ -27,7 +27,7 @@ protected $fillable = [
 
     public function products() : BelongsToMany
     {
-        return $this->BelongsToMany(Product::class);
+        return $this->BelongsToMany(Product::class, 'product_sizes');
     }
 
     public function getRouteKeyName() : string
