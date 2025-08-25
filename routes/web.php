@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -105,6 +106,18 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
             'edit' => 'products.edit',
             'update' => 'products.update',
             'destroy' => 'products.destroy',
+        ]
+    ]);
+
+    // Coupons Routes
+    Route::resource('coupons', CouponController::class, [
+        'names' => [
+            'index' => 'coupons.index',
+            'create' => 'coupons.create',
+            'store' => 'coupons.store',
+            'edit' => 'coupons.edit',
+            'update' => 'coupons.update',
+            'destroy' => 'coupons.destroy',
         ]
     ]);
 });
