@@ -12,9 +12,9 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+// Route::get('/', function () {
+//     return view('frontend.home');
+// });
 
 Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
 Route::post('/admin/auth', [AdminController::class, 'auth'])->name('admin.auth');
@@ -127,6 +127,7 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
 //======================================Frontend Section======================================
 
 
+Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/product-details', [HomeController::class, 'productDetails'])->name('product.details');
 Route::get('/shops', [HomeController::class, 'product'])->name('product');
 Route::get('/contacts', [HomeController::class, 'contact'])->name('contact');
