@@ -128,10 +128,20 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
 
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/product-details', [HomeController::class, 'productDetails'])->name('product.details');
+Route::get('/product-details/{slug}', [HomeController::class, 'productDetails'])->name('product.details');
 Route::get('/shops', [HomeController::class, 'product'])->name('product');
 Route::get('/contacts', [HomeController::class, 'contact'])->name('contact');
 Route::get('/abouts', [HomeController::class, 'about'])->name('frontend.about');
 Route::get('/contacts', [HomeController::class, 'contact'])->name('contact');
 Route::get('/faqs', [HomeController::class, 'faq'])->name('frontend.faq');
 Route::get('/helps', [HomeController::class, 'help'])->name('frontend.help');
+
+// Category wise product show
+Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category.products');
+
+// Subcategory wise product show
+Route::get('/subcategory/{id}', [SubcategoryController::class, 'show'])->name('subcategory.products');
+
+// Childcategory wise product show
+Route::get('/childcategory/{id}', [ChildcategoryController::class, 'show'])->name('childcategory.products');
+
