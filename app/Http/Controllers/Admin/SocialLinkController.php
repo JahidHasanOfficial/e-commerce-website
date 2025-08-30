@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\SocialLink;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\UpdateSocialLinkRequest;
 
 class SocialLinkController extends Controller
 {
@@ -13,7 +15,7 @@ class SocialLinkController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -45,15 +47,17 @@ class SocialLinkController extends Controller
      */
     public function edit(SocialLink $socialLink)
     {
-        //
+        return view('backend.pages.social_links', compact('socialLink'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SocialLink $socialLink)
+    public function update(UpdateSocialLinkRequest $request, SocialLink $socialLink) : RedirectResponse 
+
     {
-        //
+        $socialLink->update($request->validated());
+        return redirect()->route('admin.social_links.index')->with('success', 'Social Link updated successfully.');
     }
 
     /**

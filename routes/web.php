@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
 
@@ -120,6 +121,19 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
             'destroy' => 'coupons.destroy',
         ]
     ]);
+
+  // Social Links Routes
+Route::resource('social_links', SocialLinkController::class, [
+    'names' => [
+        'index'   => 'social_links.index',   // List all social links
+        'create'  => 'social_links.create',  // Show create form
+        'store'   => 'social_links.store',   // Store new link
+        'edit'    => 'social_links.edit',    // Show edit form (uses {id})
+        'update'  => 'social_links.update',  // Update link (uses {id})
+        'destroy' => 'social_links.destroy', // Delete link (uses {id})
+    ]
+]);
+
 });
 
 

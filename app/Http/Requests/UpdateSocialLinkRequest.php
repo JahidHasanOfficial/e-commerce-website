@@ -11,7 +11,7 @@ class UpdateSocialLinkRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class UpdateSocialLinkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'facebook' => 'nullable|url',
+            'twitter' => 'nullable|url',
+            'instagram' => 'nullable|url',
+            'linkedin' => 'nullable|url',
+            'youtube' => 'nullable|url',
+            'tiktok' => 'nullable|url',
+            'pinterest' => 'nullable|url',
+            'snapchat' => 'nullable|url',
+            'whatsapp' => 'nullable|numeric',
         ];
     }
 }
