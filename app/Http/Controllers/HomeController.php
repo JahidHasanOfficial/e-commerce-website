@@ -9,7 +9,10 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use Termwind\Components\Raw;
 use App\Models\Childcategory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class HomeController extends Controller
 {
@@ -33,9 +36,27 @@ public function index()
 
 
 
+public function orderProduct(Request $request) : View |  RedirectResponse
 
-
-
+{
+    if($request->input('field')){
+        //get the field  and check if exists
+        $allowedFields = ['name', 'price', 'created_at'];
+        $field =  in_array($request->input('field'), $allowedFields) ? $request->input('field') : 'name';
+        
+        //get the direction  and check if exists
+        $allowedDirections = ['asc', 'desc'];
+        $direction = in_array($request->input('direction'), $allowedDirections) ? $request->input('direction') : 'asc';
+        
+        // get products ordered by field and direction
+        $products = Product::orderBy($field, $direction)->paginate(10);
+        
+        // return view with ordered products
+        return view('frontend.pages.product', compact('products'));
+    }else{
+        return redirect()->route('home')->with('error', 'Please choose a field to order by.');
+    }
+}
 
 
 

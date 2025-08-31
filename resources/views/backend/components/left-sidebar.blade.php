@@ -164,7 +164,7 @@
                 </li>
 
                 {{-- Settings --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:void(0);" class="has-arrow waves-effect {{ request()->routeIs('admin..*') ? 'active' : '' }}">
                         <i class="mdi mdi-email"></i>
                         <span>Settings</span>
@@ -175,7 +175,7 @@
                         </li>
                        
                     </ul>
-                </li>
+                </li> --}}
 
             </ul>
         </div>

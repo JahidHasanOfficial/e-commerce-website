@@ -141,8 +141,11 @@ Route::resource('social_links', SocialLinkController::class, [
 //======================================Frontend Section======================================
 
 
-Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product-details/{slug}', [HomeController::class, 'productDetails'])->name('product.details');
+Route::post('/order-product', [HomeController::class, 'orderProduct'])->name('order.products');
+
+
 Route::get('/shops', [HomeController::class, 'product'])->name('product');
 Route::get('/contacts', [HomeController::class, 'contact'])->name('contact');
 Route::get('/abouts', [HomeController::class, 'about'])->name('frontend.about');
