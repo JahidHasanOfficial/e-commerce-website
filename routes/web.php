@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartControlller;
 use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
+use App\Http\Controllers\ProductCartController;
 
 // Route::get('/', function () {
 //     return view('frontend.home');
@@ -161,4 +163,18 @@ Route::get('/subcategory/{id}', [SubcategoryController::class, 'show'])->name('s
 
 // Childcategory wise product show
 Route::get('/childcategory/{id}', [ChildcategoryController::class, 'show'])->name('childcategory.products');
+
+// Cart Routes
+
+// Cart page
+Route::get('/cart', [ProductCartController::class, 'index'])->name('cart.index');
+
+// Add to cart (form submission)
+Route::post('/cart/add', [ProductCartController::class, 'addToCart'])->name('cart.add');
+
+// Update quantity via AJAX
+Route::post('/cart/update', [ProductCartController::class, 'update'])->name('cart.update');
+
+// Remove item via AJAX
+Route::post('/cart/remove', [ProductCartController::class, 'remove'])->name('cart.remove');
 
